@@ -30,7 +30,7 @@ mask = np.zeros_like(corr, dtype=np.bool)
 mask[np.triu_indices_from(mask)] = True
 
 # Set up the matplotlib figure
-f, ax = plt.subplots(figsize=(11, 9))
+f, ax = plt.subplots(figsize=(11, 9)) 
 
 # Generate a custom diverging colormap
 cmap = sns.diverging_palette(220, 10, as_cmap=True)
