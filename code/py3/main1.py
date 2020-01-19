@@ -10,10 +10,17 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-file_in = r"C:\OneDrive\misc\katzenquartett\katzenquartett.csv"
+file_in = r"..\..\data\katzenquartett.csv"
 df = pd.read_csv(file_in, sep=',')
 
-sns.violinplot(data=df)
+#%% plot distrivution
+
+#sns.violinplot(data=df)
+
+sns.boxplot(data=df)
+# for statistical annotations, 
+# see: https://github.com/webermarcolivier/statannot
+
 
 #%%
 corr = df.corr()
@@ -32,12 +39,6 @@ cmap = sns.diverging_palette(220, 10, as_cmap=True)
 sns.heatmap(corr, mask=mask, cmap=cmap, vmax=.3, center=0,
             square=True, linewidths=.5, cbar_kws={"shrink": .5})
 
-
-#%%
-
-sns.lmplot(x="x", y="y", col="dataset", hue="dataset", data=df,
-           col_wrap=2, ci=None, palette="muted", height=4,
-           scatter_kws={"s": 50, "alpha": 1})
 
 #%%
 
