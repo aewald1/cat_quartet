@@ -10,6 +10,8 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+from statannot import add_stat_annotation
+
 file_in = r"..\..\data\katzenquartett.csv"
 df = pd.read_csv(file_in, sep=',')
 
@@ -17,9 +19,13 @@ df = pd.read_csv(file_in, sep=',')
 
 #sns.violinplot(data=df)
 
-sns.boxplot(data=df)
+ax = sns.boxplot(data=df)
 # for statistical annotations, 
 # see: https://github.com/webermarcolivier/statannot
+ax = sns.boxplot(data=df)
+test_results = add_stat_annotation(ax, data=df,
+                                   box_pairs=[("Fellpflege", "Größe"), ("Fellpflege", "Unabhängkeit"), ("Lautstärke", "Intelligenz")],
+                                   test='t-test_paired', text_format='star', loc='inside', verbose=2)
 
 
 #%%
